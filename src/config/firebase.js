@@ -12,13 +12,6 @@ const {
     MESSAGING_SENDER_ID,
     APP_ID,
 } = process.env;
-// API_KEY = "AIzaSyBWVTy1n0ppyK2wlZNCstBwYH4noh_0_OY"
-// AUTH_DOMAIN = "cusmartbudget.firebaseapp.com"
-// PROJECT_ID = "cusmartbudget"
-// STORAGE_BUCKET = "cusmartbudget.appspot.com"
-// MESSAGING_SENDER_ID = "930238452730"
-// APP_ID = "1:930238452730:web:40b47ad4d694a1d6244a43"
-
 
 
 
