@@ -10,11 +10,17 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+// Allow all origins
+app.use(cors());
 
-// OR Use CORS with specific options
+// OR, if you want to allow credentials (e.g., cookies), use the following:
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: '*', // Allow any origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true, // Allow cookies to be sent with requests
 }));
+
 
 app.get('/', (req, res) => {
     res.json({
