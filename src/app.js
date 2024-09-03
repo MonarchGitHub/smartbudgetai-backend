@@ -13,7 +13,7 @@ app.listen(port, () => {
 
 // OR Use CORS with specific options
 app.use(cors({
-    origin: 'https://smartbudgetai-backend.onrender.com',
+    origin: 'http://localhost:3000',
 }));
 
 app.get('/', (req, res) => {
