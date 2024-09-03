@@ -1,12 +1,20 @@
 const { testFirestore } = require('./testing/firestoretest');
 const express = require('express');
+const cors = require('cors');
+
+
+
+
 const app = express();
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-
+// OR Use CORS with specific options
+app.use(cors({
+    origin: 'https://smartbudgetai-backend.onrender.com',
+}));
 
 app.get('/', (req, res) => {
     res.json({
@@ -15,9 +23,12 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/testing', (req, res) => {
-    testFirestore();
-    res.json({
+app.get('/testing', async (req, res) => {
 
+    const userDetail = await testFirestore();
+    console.log("userDetail in main", userDetail);
+
+    res.send({
+        userDetail
     })
 })
