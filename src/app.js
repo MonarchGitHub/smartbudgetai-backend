@@ -14,12 +14,12 @@ app.listen(port, () => {
 app.use(cors());
 
 // OR, if you want to allow credentials (e.g., cookies), use the following:
-app.use(cors({
-    origin: '*', // Allow any origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials: false, //not Allow cookies to be sent with requests
-}));
+// app.use(cors({
+//     origin: '*', // Allow any origin
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+//     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+//     credentials: false, //not Allow cookies to be sent with requests
+// }));
 
 
 app.get('/', (req, res) => {
