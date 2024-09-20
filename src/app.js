@@ -38,3 +38,12 @@ app.get('/testing', async (req, res) => {
         userDetail
     })
 })
+app.post('/signup', async (req, res) => {
+
+    const userDetail = await testFirestore();
+    console.log("userDetail in main", userDetail);
+
+    res.send({
+        userDetail
+    })
+})
