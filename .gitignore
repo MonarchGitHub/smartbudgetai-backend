@@ -73,4 +73,5 @@ typings/
 # Serverless directories
 .serverless
 
-
+serviceAccountKey.json
+cusmartbudget-firebase-adminsdk-ahm6y-47c834218c.json

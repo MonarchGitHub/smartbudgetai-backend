@@ -1,6 +1,11 @@
 
 const { initializeApp } = require('firebase/app');
 const { getFirestore } = require('firebase/firestore');
+// const { initializeApp } = require('firebase-admin/app');
+const admin = require('firebase-admin');
+
+const serviceAccount = require('../../serviceAccountKey.json');
+
 require('dotenv').config();
 
 const {
