@@ -16,7 +16,7 @@ async function getUserByEmail() {
         const docSnap = await getDocs(q);
 
         if (!docSnap.empty) {
-            // Document data
+
             docSnap.forEach((doc) => {
                 userDetail.push(doc.data());
                 console.log('Document data:', doc.data());
