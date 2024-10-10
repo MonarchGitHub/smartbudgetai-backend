@@ -5,7 +5,7 @@ const { createUser } = require('./controllers/accountController');
 const app = express();
 const port = process.env.PORT || 5000;
 const { testGemini } = require('./utils/aiService');
-const { getCategories } = require('./controllers/expenseController');
+const { getCategories, deleteCategory } = require('./controllers/expenseController');
 
 
 app.listen(port, () => {
@@ -67,6 +67,46 @@ app.post('/allcategories', async (req, res) => {
 
         // Fetch categories
         const categories = await getCategories(uid, month, year);
+
+        // Check if categories are retrieved successfully
+        if (!categories) {
+            return res.status(404).json({
+                error: 'No categories found for the given parameters.'
+            });
+        }
+
+        // Success response
+        res.status(200).json({
+            success: true,
+            categories
+        });
+    } catch (error) {
+        // Log the error
+        console.error('Error fetching categories:', error);
+
+        // Return a 500 Internal Server Error response
+        res.status(500).json({
+            error: 'An internal server error occurred. Please try again later.'
+        });
+    }
+});
+
+app.post('/deletecategory', async (req, res) => {
+    try {
+        const { uid, month, year, categoryName } = req.body;
+
+        // Input validation
+        if (!uid || !month || !year) {
+            return res.status(400).json({
+                error: 'Missing required fields: uid, month, and year are required.'
+            });
+        }
+
+        // Log the incoming request
+        console.log(`Fetching categories for uid: ${uid}, month: ${month}, year: ${year}`);
+
+        // Fetch categories
+        const categories = await deleteCategory(uid, month, year, categoryName);
 
         // Check if categories are retrieved successfully
         if (!categories) {
