@@ -4,6 +4,7 @@ const cors = require('cors');
 const { createUser } = require('./controllers/accountController');
 const app = express();
 const port = process.env.PORT || 5000;
+const { testGemini } = require('./utils/aiService');
 
 
 app.listen(port, () => {
@@ -39,18 +40,14 @@ app.get('/testing', async (req, res) => {
 })
 
 
-// app.post('/login', async (req, res) => {
+app.get('/geminitest', async (req, res) => {
 
-//     console.log("req.body in main", req.body);
+    const gemini = await testGemini();
 
-
-//     const userDetail = await createUser(req.body.email, req.body.password);
-//     console.log("userDetail in main", userDetail);
-
-//     res.send({
-//         userDetail
-//     })
-// })
+    res.send({
+        gemini
+    })
+})
 
 app.post('/signup', async (req, res) => {
     try {

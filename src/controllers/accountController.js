@@ -9,8 +9,6 @@ const { getAuth, createUserWithEmailAndPassword } = require('firebase/auth');
 
 async function createUser(uid, name, phone) {
 
-
-
     const user = await checkIfUserExists(uid);
 
     if (!user) {
